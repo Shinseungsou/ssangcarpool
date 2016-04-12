@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SsangCarpool</string>
+    <string name="auth_label_id">id</string>
+    <string name="auth_label_password">pw</string>
+    <string name="auth_label_sign_in">로그인</string>
+    <string name="auth_label_sign_up">회원가입</string>
+</resources>
