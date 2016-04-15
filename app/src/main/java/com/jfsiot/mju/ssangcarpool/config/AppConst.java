@@ -8,10 +8,10 @@ public class AppConst {
         public static final int GPS = 0;
     }
     public static class API{
-        public static final String API_BASE_RELEASE = "";
-        public static final String API_BASE_DEBUG = "";
+        public static final String API_BASE_RELEASE = "maps.googleapis.com/maps";
+        public static final String API_BASE_DEBUG = "maps.googleapis.com/maps";
 
-        public static final String API_VERSION_DEBUG = "";
-        public static final String API_VERSION_RELEASE = "";
+        public static final String API_VERSION_DEBUG = "directions";
+        public static final String API_VERSION_RELEASE = "directions";
     }
 }

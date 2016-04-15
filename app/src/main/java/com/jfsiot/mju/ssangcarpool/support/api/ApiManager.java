@@ -4,22 +4,11 @@ import android.content.Context;
 
 import com.jfsiot.mju.ssangcarpool.BuildConfig;
 import com.jfsiot.mju.ssangcarpool.config.AppConst;
-import com.squareup.okhttp.Cache;
 import com.squareup.okhttp.OkHttpClient;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
-import timber.log.Timber;
 
-/**
- * Created by SSS on 2016-04-15.
- */
 public class ApiManager {
     public static final int TIMEOUT = 30;
 
