@@ -1,7 +1,9 @@
-package com.jfsiot.mju.ssangcarpool;
+package com.jfsiot.mju.ssangcarpool.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.jfsiot.mju.ssangcarpool.R;
 
 /**
  * Created by SSS on 2016-04-05.
