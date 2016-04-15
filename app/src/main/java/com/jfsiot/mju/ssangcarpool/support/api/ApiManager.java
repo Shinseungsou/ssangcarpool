@@ -39,4 +39,7 @@ public class ApiManager {
         }
         return builder.build();
     }
+    public static ApiGoogleMaps createGoogleMapsApi(Context context, RestAdapter.LogLevel loglevel, RestAdapter.Log logger) {
+        return getRestAdapter(context, loglevel, logger).create(ApiGoogleMaps.class);
+    }
 }
