@@ -20,7 +20,7 @@ public class AuthActivity extends AppCompatActivity {
         findViewById(R.id.auth_sign_in).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AuthActivity.this, MainActivity.class);
+                Intent intent = new Intent(AuthActivity.this, MainMapActivity.class);
                 startActivity(intent);
                 finish();
             }

@@ -1,5 +1,6 @@
 package com.jfsiot.mju.ssangcarpool.support.api;
 
+import com.google.maps.model.DirectionsResult;
 import com.jfsiot.mju.ssangcarpool.model.response.VoidResponse;
 
 import retrofit.http.GET;
@@ -11,9 +12,10 @@ import rx.Observable;
  */
 public interface ApiGoogleMaps {
     @GET("/json")
-    Observable<VoidResponse> getDirections(
+    Observable<DirectionsResult> getDirections(
         @Query("origin") String origin,
         @Query("destination") String destinaton,
-        @Query("key") String key
+        @Query("key") String key,
+        @Query("sensor") Boolean sensor
     );
 }
