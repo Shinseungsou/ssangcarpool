@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".AuthActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tab_container">
+        <RelativeLayout
+            android:id="@+id/lay1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img1"
+                android:layout_width="80dp"
+                android:layout_height="100dp"
+                android:src="@drawable/capture2"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                />
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="김퇴근"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:gravity="center"
+                android:layout_toRightOf="@+id/img1"
+                android:layout_alignTop="@+id/img1"
+                android:layout_marginRight="100dp"
+                android:layout_marginTop="16sp"/>
+            <RatingBar
+                android:id="@+id/avg_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/img1"
+                android:layout_below="@+id/text1"
+                android:layout_marginTop="16dp"
+                android:clickable="false"
+                android:layout_marginBottom="4dp"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/lay2"
+            android:layout_marginTop="100dp"
+            >
+            <include layout="@layout/divider"/>
+
+            <ListView
+                android:id="@+id/list2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </ListView>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <include layout="@layout/divider"/>
+
+
+    <include layout="@layout/tab_bar"/>
+</RelativeLayout>

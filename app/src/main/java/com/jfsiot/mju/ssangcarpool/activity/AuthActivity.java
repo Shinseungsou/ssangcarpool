@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.jfsiot.mju.ssangcarpool.R;
+import com.jfsiot.mju.ssangcarpool.activity2.*;
 import com.jfsiot.mju.ssangcarpool.config.AppConst;
 
 public class AuthActivity extends AppCompatActivity {
@@ -23,6 +24,13 @@ public class AuthActivity extends AppCompatActivity {
                 Intent intent = new Intent(AuthActivity.this, MainMapActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+        findViewById(R.id.auth_sign_up).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AuthActivity.this, com.jfsiot.mju.ssangcarpool.activity2.SignUpActivity.class);
+                startActivity(intent);
             }
         });
     }

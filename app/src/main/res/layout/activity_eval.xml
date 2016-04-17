@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tab_container">
+
+    <RelativeLayout
+        android:id="@+id/eval_layout_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <ImageView
+            android:id="@+id/eval_imageView_1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/android"/>
+        <TextView
+            android:id="@+id/eval_textView_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="홍길동"
+            android:textSize="24sp"
+            android:layout_toRightOf="@+id/eval_imageView_1"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24dp"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/eval_layout_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="24dp"
+        android:layout_below="@+id/eval_layout_2">
+
+        <TextView
+            android:id="@+id/eval_textView_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="별점"
+            android:textSize="20dp"
+            android:layout_centerVertical="true"/>
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/eval_textView_2"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/eval_layout_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eval_layout_3"
+        android:padding="16dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    <include layout="@layout/tab_bar"/>
+
+</RelativeLayout>
