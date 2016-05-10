@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tab_container">
+
+    <RelativeLayout
+        android:id="@+id/registcar_layout_2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:id="@+id/registcar_textview_1"
+            android:layout_width="84dp"
+            android:layout_height="match_parent"
+            android:text="차량 번호"
+            android:textSize="20dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/registcar_editText_1"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/registcar_textview_1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="8dp"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/registcar_layout_3"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/registcar_layout_2"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/registcar_textview_2"
+            android:layout_width="84dp"
+            android:layout_height="match_parent"
+            android:text="차량 종류"
+            android:textSize="20dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/registcar_editText_2"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/registcar_textview_2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="8dp"/>
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/registcar_layout_4"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/registcar_layout_3"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/registcar_textview_3"
+            android:layout_width="84dp"
+            android:layout_height="match_parent"
+            android:text="차량 색상"
+            android:textSize="20dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/registcar_editText_3"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/registcar_textview_3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="8dp"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/registcar_layout_4"
+        android:text="가입하기"
+        android:textSize="20dp"
+        android:layout_centerHorizontal = "true"
+        android:layout_marginTop="160dp"/>
+
+        </RelativeLayout>
+
+
+    <include layout="@layout/tab_bar"/>
+
+</RelativeLayout>

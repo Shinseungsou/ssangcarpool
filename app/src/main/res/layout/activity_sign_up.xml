@@ -88,31 +88,5 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:weightSum="1">
-        <TextView
-            android:layout_width="64dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_weight="0.5"
-            android:gravity="center"
-            android:textSize="18sp"
-            android:text="cancel"/>
-        <TextView
-            android:layout_width="64dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_weight="0.5"
-            android:gravity="center"
-            android:textSize="18sp"
-            android:text="sign up"/>
-    </LinearLayout>
+
 </LinearLayout>
