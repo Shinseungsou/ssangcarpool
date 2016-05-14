@@ -38,7 +38,7 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
     private ImageView tabEvaluation;
     private ImageView tabOther;
     private List<MapPOIData> items;
-    private TextView searchView;
+    private EditText searchView;
     private ImageView searchButton;
     private SearchAdapter adapter;
     private ListView searchResult;
@@ -60,29 +60,30 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
         tMapGpsManager.setMinTime(1000);
         tMapGpsManager.setMinDistance(5);
         tMapGpsManager.setProvider(TMapGpsManager.GPS_PROVIDER);
-        tMapGpsManager.OpenGps();
+//        tMapGpsManager.OpenGps();
 
         ((FrameLayout) findViewById(R.id.maps_map)).addView(tmap);
-        searchResult = (ListView) findViewById(R.id.search_result);
-        searchResult.setVisibility(View.GONE);
+        this.searchResult = (ListView) findViewById(R.id.search_result);
+        this.searchResult.setVisibility(View.GONE);
 
         items = new ArrayList<>();
         this.searchView = (EditText) findViewById(R.id.search_query);
 
         tabMsg = ((ImageView) findViewById(R.id.tab_msg));
-        tabMsg.setOnClickListener(this);
         tabEvaluation = ((ImageView) findViewById(R.id.tab_eval));
-        tabEvaluation.setOnClickListener(this);
         tabProfile = ((ImageView) findViewById(R.id.tab_profile));
-        tabProfile.setOnClickListener(this);
         tabOther = ((ImageView) findViewById(R.id.tab_other));
-        tabOther.setOnClickListener(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         final ListView searchResult = ((ListView) findViewById(R.id.search_result));
+
+        tabMsg.setOnClickListener(this);
+        tabEvaluation.setOnClickListener(this);
+        tabProfile.setOnClickListener(this);
+        tabOther.setOnClickListener(this);
 
         this.searchButton = ((ImageView) findViewById(R.id.search_button));
         this.searchButton.setOnClickListener(new View.OnClickListener() {
@@ -129,15 +130,19 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
         ((InputMethodManager) this.getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(this.searchView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         this.searchResult.setVisibility(View.GONE);
 
+//        tMapGpsManager.CloseGps();
+
         TMapData tMapData = new TMapData();
-        TMapPoint currentLocation = tMapGpsManager.getLocation();
-        tMapData.findPathData(new TMapPoint(currentLocation.getLatitude(), currentLocation.getLongitude()), new TMapPoint(Double.parseDouble(items.get(positiion).getCenterLat()), Double.parseDouble(items.get(positiion).getCenterLon())), new TMapData.FindPathDataListenerCallback() {
-            @Override
-            public void onFindPathData(TMapPolyLine tMapPolyLine) {
-                Timber.d("find path");
-                tmap.addTMapPolyLine("line", tMapPolyLine);
-            }
-        });
+        MapPOIData mapPOIData = ((MapPOIData) adapter.getItem(positiion));
+        tmap.setCenterPoint(Double.parseDouble(mapPOIData.getCenterLon()), Double.parseDouble(mapPOIData.getCenterLat()));
+
+//        tMapData.findPathData(new TMapPoint(currentLocation.getLatitude(), currentLocation.getLongitude()), new TMapPoint(Double.parseDouble(items.get(positiion).getCenterLat()), Double.parseDouble(items.get(positiion).getCenterLon())), new TMapData.FindPathDataListenerCallback() {
+//            @Override
+//            public void onFindPathData(TMapPolyLine tMapPolyLine) {
+//                Timber.d("find path");
+//                tmap.addTMapPolyLine("line", tMapPolyLine);
+//            }
+//        });
     }
 
     @Override
