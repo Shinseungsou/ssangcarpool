@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/search_departure"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="8dp"
+        android:hint="출발지 검색"
+        android:padding="8dp"
+        android:background="@drawable/view_border"/>
+    <TextView
+        android:id="@+id/search_destination"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_vertical"
+        android:hint="도착지 검색"
+        android:padding="8dp"
+        android:layout_below="@+id/search_departure"
+        android:background="@drawable/view_border"/>
+    <ListView
+        android:id="@+id/search_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_below="@id/search_destination"/>
+</RelativeLayout>
