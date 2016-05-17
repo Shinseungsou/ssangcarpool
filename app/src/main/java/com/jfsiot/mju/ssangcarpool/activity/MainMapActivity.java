@@ -2,6 +2,7 @@ package com.jfsiot.mju.ssangcarpool.activity;
 
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import com.jfsiot.mju.ssangcarpool.activity2.ProfileActivity;
 import com.jfsiot.mju.ssangcarpool.adapter.OnItemClickListener;
 import com.jfsiot.mju.ssangcarpool.adapter.SearchAdapter;
 import com.jfsiot.mju.ssangcarpool.model.map.MapPOIData;
+import com.jfsiot.mju.ssangcarpool.model.map.MapRoute;
 import com.skp.Tmap.TMapData;
 import com.skp.Tmap.TMapGpsManager;
 import com.skp.Tmap.TMapPOIItem;
@@ -31,19 +33,27 @@ import java.util.List;
 
 import timber.log.Timber;
 
-public class MainMapActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback, OnItemClickListener, View.OnClickListener {
+public class MainMapActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback, OnItemClickListener, View.OnClickListener, TMapGpsManager.onLocationChangedCallback {
 
     private ImageView tabMsg;
     private ImageView tabProfile;
     private ImageView tabEvaluation;
     private ImageView tabOther;
-    private List<MapPOIData> items;
-    private TextView searchView;
+
+    private ImageView gpsButton;
+    private ImageView navigationButton;
+
     private ImageView searchButton;
-    private SearchAdapter adapter;
+    private EditText searchView;
     private ListView searchResult;
+
     private TMapView tmap;
     private TMapGpsManager tMapGpsManager;
+
+    private boolean gpsOpened;
+    private List<MapPOIData> items;
+
+    private SearchAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,23 +70,23 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
         tMapGpsManager.setMinTime(1000);
         tMapGpsManager.setMinDistance(5);
         tMapGpsManager.setProvider(TMapGpsManager.GPS_PROVIDER);
-        tMapGpsManager.OpenGps();
+//        tMapGpsManager.OpenGps();
 
         ((FrameLayout) findViewById(R.id.maps_map)).addView(tmap);
-        searchResult = (ListView) findViewById(R.id.search_result);
-        searchResult.setVisibility(View.GONE);
+        this.searchResult = (ListView) findViewById(R.id.search_result);
+        this.searchResult.setVisibility(View.GONE);
 
         items = new ArrayList<>();
         this.searchView = (EditText) findViewById(R.id.search_query);
 
+        this.gpsButton = ((ImageView) findViewById(R.id.gps_location_button));
+        this.navigationButton = ((ImageView) findViewById(R.id.navigation_button));
+        gpsOpened = false;
+
         tabMsg = ((ImageView) findViewById(R.id.tab_msg));
-        tabMsg.setOnClickListener(this);
         tabEvaluation = ((ImageView) findViewById(R.id.tab_eval));
-        tabEvaluation.setOnClickListener(this);
         tabProfile = ((ImageView) findViewById(R.id.tab_profile));
-        tabProfile.setOnClickListener(this);
         tabOther = ((ImageView) findViewById(R.id.tab_other));
-        tabOther.setOnClickListener(this);
     }
 
     @Override
@@ -84,6 +94,14 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
         //onCreate로 생성된 뷰를 가져오는 함수
         super.onResume();
         final ListView searchResult = ((ListView) findViewById(R.id.search_result));
+
+        tabMsg.setOnClickListener(this);
+        tabEvaluation.setOnClickListener(this);
+        tabProfile.setOnClickListener(this);
+        tabOther.setOnClickListener(this);
+
+        gpsButton.setOnClickListener(this);
+        navigationButton.setOnClickListener(this);
 
         this.searchButton = ((ImageView) findViewById(R.id.search_button));
         this.searchButton.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +114,7 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
                     public void onFindTitlePOI(ArrayList<TMapPOIItem> arrayList) {
                         ((InputMethodManager) MainMapActivity.this.getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(MainMapActivity.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                         MainMapActivity.this.items.clear();
-                        for (TMapPOIItem item : arrayList){
+                        for (TMapPOIItem item : arrayList) {
                             MainMapActivity.this.items.add(new MapPOIData(item));
                             Timber.d("%s", new MapPOIData(item).toString());
                         }
@@ -104,7 +122,8 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
                             @Override
                             public void run() {
                                 MainMapActivity.this.adapter.notifyDataSetChanged();
-                                if (MainMapActivity.this.searchResult.getVisibility() == View.GONE) MainMapActivity.this.searchResult.setVisibility(View.VISIBLE);
+                                if (MainMapActivity.this.searchResult.getVisibility() == View.GONE)
+                                    MainMapActivity.this.searchResult.setVisibility(View.VISIBLE);
                             }
                         });
                     }
@@ -112,6 +131,12 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
             }
         });
         this.searchResult.setAdapter(this.adapter = new SearchAdapter(this, R.layout.viewholder_search_result, items, this));
+
+        if(MapRoute.getInstance().getRoute() != null){
+            this.tmap.addTMapPolyLine("route", MapRoute.getInstance().getRoute());
+            Timber.d("find route");
+            this.tmap.setTMapPoint(MapRoute.getInstance().getPointOrigination().getLatitude(), MapRoute.getInstance().getPointOrigination().getLongitude());
+        }
     }
 
     @Override
@@ -132,15 +157,19 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
         ((InputMethodManager) this.getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(this.searchView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         this.searchResult.setVisibility(View.GONE);
 
+//        tMapGpsManager.CloseGps();
+
         TMapData tMapData = new TMapData();
-        TMapPoint currentLocation = tMapGpsManager.getLocation();
-        tMapData.findPathData(new TMapPoint(currentLocation.getLatitude(), currentLocation.getLongitude()), new TMapPoint(Double.parseDouble(items.get(positiion).getCenterLat()), Double.parseDouble(items.get(positiion).getCenterLon())), new TMapData.FindPathDataListenerCallback() {
-            @Override
-            public void onFindPathData(TMapPolyLine tMapPolyLine) {
-                Timber.d("find path");
-                tmap.addTMapPolyLine("line", tMapPolyLine);
-            }
-        });
+        MapPOIData mapPOIData = ((MapPOIData) adapter.getItem(positiion));
+        tmap.setCenterPoint(Double.parseDouble(mapPOIData.getCenterLon()), Double.parseDouble(mapPOIData.getCenterLat()));
+
+//        tMapData.findPathData(new TMapPoint(currentLocation.getLatitude(), currentLocation.getLongitude()), new TMapPoint(Double.parseDouble(items.get(positiion).getCenterLat()), Double.parseDouble(items.get(positiion).getCenterLon())), new TMapData.FindPathDataListenerCallback() {
+//            @Override
+//            public void onFindPathData(TMapPolyLine tMapPolyLine) {
+//                Timber.d("find path");
+//                tmap.addTMapPolyLine("line", tMapPolyLine);
+//            }
+//        });
     }
 
     @Override
@@ -153,11 +182,30 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
             changeToActivity(MessageActivity.class);
         }else if(v.getId() == this.tabOther.getId()){
             changeToActivity(MessageActivity.class);
+        }else if(v.getId() == this.gpsButton.getId()){
+            gpsOpened = !gpsOpened;
+            if(gpsOpened){
+                tMapGpsManager.OpenGps();
+                gpsButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+            }else{
+                tMapGpsManager.CloseGps();
+                gpsButton.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            }
+        }else if(v.getId() == this.navigationButton.getId()){
+            changeToActivity(NavigationActivity.class);
         }
     }
 
     public void changeToActivity(Class activity){
         Intent intent = new Intent(this, activity);
         startActivity(intent);
+    }
+
+    @Override
+    public void onLocationChange(Location location) {
+        if(gpsOpened){
+            TMapPoint point = tMapGpsManager.getLocation();
+            tmap.setCenterPoint(point.getLongitude(), point.getLatitude());
+        }
     }
 }
