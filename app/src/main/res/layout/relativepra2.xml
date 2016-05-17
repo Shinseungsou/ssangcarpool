@@ -4,16 +4,46 @@
     android:background="#fff">
 
     <TextView
-        android:id="@+id/text1"
-        android:layout_width="match_parent"
+        android:id="@+id/departure"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
+
+        android:text="#출발지:"/>
+    <TextView
+        android:id="@+id/departure_name"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_toRightOf="@+id/departure"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="1dp"
         android:layout_marginRight="16dp"/>
     <TextView
-        android:id="@+id/text2"
-        android:layout_width="140dp"
+        android:id="@+id/destination"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_below="@+id/departure"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+
+        android:text="#도착지:"/>
+    <TextView
+        android:id="@+id/destination_name"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_toRightOf="@+id/destination"
+        android:layout_below="@+id/departure_name"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="16dp"/>
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:maxLines="3"
         android:layout_alignParentRight="true"
