@@ -51,7 +51,7 @@
             android:orientation="vertical"
             android:id="@+id/lay2"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="160dp"
             android:layout_below="@+id/lay1">
             <include layout="@layout/divider"/>
             <TextView
@@ -71,9 +71,10 @@
             </ListView>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/lay3"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="160dp"
             android:layout_below="@+id/lay2"
             android:layout_marginTop="8dp">
             <include layout="@layout/divider"/>
@@ -93,6 +94,39 @@
                 android:layout_height="wrap_content">
             </ListView>
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lay3"
+            android:layout_marginLeft="16dp">
+            <EditText
+                android:id="@+id/myprofile_edittext1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:hint="이름"/>
+            <EditText
+                android:id="@+id/myprofile_edittext2"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/myprofile_edittext1"
+                android:hint="평가"/>
+            <EditText
+                android:id="@+id/myprofile_edittext3"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/myprofile_edittext2"
+                android:hint="별점"/>
+
+            <Button
+                android:id="@+id/myprofile_button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_toRightOf="@+id/myprofile_edittext3"
+                android:text="SUBMIT"/>
+
+        </RelativeLayout>
     </RelativeLayout>
 
     <include layout="@layout/divider"/>

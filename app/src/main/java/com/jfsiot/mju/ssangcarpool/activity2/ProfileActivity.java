@@ -4,6 +4,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RatingBar;
 
@@ -15,6 +18,10 @@ import java.util.ArrayList;
  * Created by User on 2016-04-16.
  */
 public class ProfileActivity extends AppCompatActivity{
+
+    Button button;
+    EditText editText1, editText2, editText3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -40,13 +47,13 @@ public class ProfileActivity extends AppCompatActivity{
         //ArrayAdapter<String> adapter;
         Aadapter aadapter1 = new Aadapter(this, R.layout.relativepra2,arDessert);
 
-        ArrayList<Room2> room2 = new ArrayList<>();
+        final ArrayList<Room2> room2 = new ArrayList<>();
         room2.add(new Room2("권동섭","운전 잘하십니다.",4 ));
         room2.add(new Room2("이강선","위험한 운전이였습니다." ,5));
         room2.add(new Room2("신민호","매너가 좋으십니다." ,5));
         room2.add(new Room2("안희철","좋은 운전이였습니다.",3 ));
 
-        Badapter badapter2 = new Badapter(this, R.layout.relative1,room2);
+        final Badapter badapter2 = new Badapter(this, R.layout.relative1,room2);
 
         ListView list1 = (ListView) findViewById(R.id.list1);
         list1.setAdapter(aadapter1);
@@ -62,6 +69,27 @@ public class ProfileActivity extends AppCompatActivity{
         list2.setDivider(new ColorDrawable(Color.LTGRAY));
         list2.setDividerHeight(2);
 
+
+
+
+        button = (Button) findViewById(R.id.myprofile_button1);
+        editText1 = (EditText) findViewById(R.id.myprofile_edittext1);
+        editText2 = (EditText) findViewById(R.id.myprofile_edittext2);
+        editText3 = (EditText) findViewById(R.id.myprofile_edittext3);
+
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                room2.add(new Room2(editText1.getText().toString(),editText2.getText().toString(),
+                        Integer.parseInt(editText3.getText().toString())));
+                badapter2.notifyDataSetChanged();
+                editText1.setText("");
+                editText2.setText("");
+                editText3.setText("");
+                editText1.requestFocus();
+            }
+        });
     }
 }
 

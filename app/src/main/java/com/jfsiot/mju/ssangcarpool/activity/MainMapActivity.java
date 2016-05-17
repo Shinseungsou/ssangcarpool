@@ -81,6 +81,7 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
 
     @Override
     protected void onResume() {
+        //onCreate로 생성된 뷰를 가져오는 함수
         super.onResume();
         final ListView searchResult = ((ListView) findViewById(R.id.search_result));
 
@@ -89,7 +90,8 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
             @Override
             public void onClick(View v) {
                 TMapData tMapData = new TMapData();
-                tMapData.findTitlePOI(searchView.getText().toString(), 20, new TMapData.FindTitlePOIListenerCallback() {
+                tMapData.findTitlePOI(searchView.getText().toString(), 20, new TMapData.FindTitlePOIListenerCallback() {    //callback : 이벤트에 대한 피드백
+                    // searchView 검색창에서 검색
                     @Override
                     public void onFindTitlePOI(ArrayList<TMapPOIItem> arrayList) {
                         ((InputMethodManager) MainMapActivity.this.getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(MainMapActivity.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -119,6 +121,7 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
 
     @Override
     public void onBackPressed() {
+        //뒤로가기 버튼 눌렀을때
         if (this.searchResult.getVisibility() == View.VISIBLE) this.searchResult.setVisibility(View.GONE);
         else super.onBackPressed();
     }
