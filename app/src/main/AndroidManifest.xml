@@ -29,6 +29,7 @@
         <activity android:name=".activity.SignUpActivity">
         </activity>
         <activity android:name=".activity.NavigationActivity"/>
+        <activity android:name=".activity2.ListUserActivity"/>
 
         <activity android:name=".activity2.RiderActivity"/>
         <activity android:name=".activity2.MainActivity"/>

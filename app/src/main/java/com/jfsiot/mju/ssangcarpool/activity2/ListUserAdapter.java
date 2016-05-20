@@ -51,9 +51,9 @@ public class ListUserAdapter extends BaseAdapter {
         //if(convertView == null){
         convertView = inflater.inflate(layout_res_id, parent, false);
         passengername = new RoomViewHolder();
-        passengername.title1 = (TextView)convertView.findViewById(R.id.departuretxt);
-        passengername.title2 = (TextView)convertView.findViewById(R.id.destinationtxt);
-        passengername.contents = (TextView)convertView.findViewById(R.id.date1);
+        passengername.title1 = (TextView)convertView.findViewById(R.id.departure_name);
+        passengername.title2 = (TextView)convertView.findViewById(R.id.destination_name);
+        passengername.contents = (TextView)convertView.findViewById(R.id.date);
         //}
         passengername.title1.setText(items.get(position).title1);
         passengername.title2.setText(items.get(position).title2);

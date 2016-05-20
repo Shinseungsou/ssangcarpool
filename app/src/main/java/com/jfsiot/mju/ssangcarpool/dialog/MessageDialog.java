@@ -10,6 +10,9 @@ import android.widget.TextView;
 import com.jfsiot.mju.ssangcarpool.R;
 import com.jfsiot.mju.ssangcarpool.activity2.Message;
 
+import retrofit.http.HEAD;
+
+
 public class MessageDialog extends AlertDialog.Builder {
     private Context context;
     private LayoutInflater inflater;
@@ -29,16 +32,16 @@ public class MessageDialog extends AlertDialog.Builder {
         return this;
     }
 
-    public class MessageDialogView{
-        private ImageView profileImage;
-        private TextView senderName;
-        private TextView receivedDate;
-        private TextView messageContents;
+    public class MessageDialogView  {
+      private ImageView profileImage;
+      private TextView senderName;
+      private TextView receivedDate;
+      private TextView messageContents;
 
-        public MessageDialogView(View view, Message message) {
-            profileImage = ((ImageView) view.findViewById(R.id.profile_image));
-            senderName = ((TextView) view.findViewById(R.id.sender_name));
-            receivedDate = ((TextView) view.findViewById(R.id.received_date));
+        public MessageDialogView(View view, Message message){
+            profileImage =((ImageView) view.findViewById(R.id.profile_image));
+            senderName =((TextView) view.findViewById(R.id.sender_name));
+            receivedDate= ((TextView) view.findViewById(R.id.received_date));
             messageContents = ((TextView) view.findViewById(R.id.message_contents));
 
             profileImage.setImageDrawable(view.getResources().getDrawable(message.image));

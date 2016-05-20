@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.jfsiot.mju.ssangcarpool.R;
+import com.jfsiot.mju.ssangcarpool.activity2.ListUserActivity;
 import com.jfsiot.mju.ssangcarpool.activity2.MessageActivity;
 import com.jfsiot.mju.ssangcarpool.activity2.ProfileActivity;
 import com.jfsiot.mju.ssangcarpool.adapter.OnItemClickListener;
@@ -179,7 +180,7 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
         }else if(v.getId() == this.tabProfile.getId()){
             changeToActivity(ProfileActivity.class);
         }else if(v.getId() == this.tabEvaluation.getId()){
-            changeToActivity(MessageActivity.class);
+            changeToActivity(ListUserActivity.class);
         }else if(v.getId() == this.tabOther.getId()){
             changeToActivity(MessageActivity.class);
         }else if(v.getId() == this.gpsButton.getId()){

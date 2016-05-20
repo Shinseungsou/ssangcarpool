@@ -51,16 +51,20 @@ public class Aadapter extends BaseAdapter{
         //if(convertView == null){
         convertView = inflater.inflate(layout_res_id, parent, false);
         room = new RoomViewHolder();
-        room.title = (TextView)convertView.findViewById(R.id.text1);
-        room.contents = (TextView)convertView.findViewById(R.id.text2);
+
+        room.departure_name = (TextView)convertView.findViewById(R.id.departure_name);
+        room.destination_name = (TextView)convertView.findViewById(R.id.destination_name);
+        room.date = (TextView)convertView.findViewById(R.id.date);
 
         //}
-        room.title.setText(items.get(position).title);
-        room.contents.setText(items.get(position).contents);
+        room.departure_name.setText(items.get(position).departure_name);
+        room.destination_name.setText(items.get(position).destination_name);
+        room.date.setText(items.get(position).date);
         return convertView;
     }
     public class RoomViewHolder{
-        public TextView title;
-        public TextView contents;
+        public TextView departure_name;
+        public TextView destination_name;
+        public TextView date;
     }
 }

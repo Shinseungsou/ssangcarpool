@@ -32,11 +32,11 @@ public class ProfileActivity extends AppCompatActivity{
         //item1.image = R.drawable.capture;
         //item1.title = "제목";
         //item1.contents = "캬르르르를르를르르르를르ㅡㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ르르르르르를르르르르르르르르르르르르르르르르ㅡ를륵";
-        arDessert.add(new Room("#출발지:기흥역   #도착지:명지대 사거리" ,"2016년 4월 5일" ));
-        arDessert.add(new Room("#출발지:기흥역   #도착지:강남역","2016년 2월 1일" ));
-        arDessert.add(new Room("#출발지:도봉역   #도착지:화정역","2016년 1월 30일" ));
-        arDessert.add(new Room("#출발지:쌍용역   #도착지:분당역","2016년 1월 2일" ));
-        arDessert.add(new Room("#출발지:사당역   #도착지:명지대","2015년 12월 31일" ));
+        arDessert.add(new Room("기흥역", "명지대 사거리" ,"2016년 4월 5일" ));
+        arDessert.add(new Room("기흥역" ,"강남역", "2016년 2월 1일" ));
+        arDessert.add(new Room("도봉역" , "화정역","2016년 1월 30일" ));
+        arDessert.add(new Room("쌍용역" , "분당역","2016년 1월 2일" ));
+        arDessert.add(new Room("사당역" ,"명지대","2015년 12월 31일" ));
         //arDessert.add("List1");
         //arDessert.add("List2");
         //arDessert.add("List3");
