@@ -1,20 +1,21 @@
 package com.jfsiot.mju.ssangcarpool.activity2;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jfsiot.mju.ssangcarpool.R;
+import com.jfsiot.mju.ssangcarpool.dialog.MessageDialog;
 
 import java.util.List;
 
-/**
- * Created by mj on 2016-04-16.
- */
 public class MessageAdapter extends BaseAdapter{
     
     private List<Message> items;
@@ -46,11 +47,30 @@ public class MessageAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         RoomViewHolder room;
 
         convertView = inflater.inflate(layout_res_id, parent, false);
 
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
+//                alertBuilder.setMessage(items.get(position).contents).show();
+
+                MessageDialog messageDialog = new MessageDialog(context);
+                messageDialog.setMessageView(items.get(position));
+                messageDialog.setPositiveButton("답장", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(context, "답장이 전송되었습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                messageDialog.setNegativeButton("확인", new DialogInterface.OnClickListener() { @Override public void onClick(DialogInterface dialog, int which) { } });
+                messageDialog.setNeutralButton("중간", new DialogInterface.OnClickListener() { @Override public void onClick(DialogInterface dialog, int which) { } });
+                messageDialog.show();
+            }
+        });
         room = new RoomViewHolder();
         room.imageview = (ImageView)convertView.findViewById(R.id.message_imageView_1);
         room.title = (TextView)convertView.findViewById(R.id.message_textView_1);
@@ -61,6 +81,8 @@ public class MessageAdapter extends BaseAdapter{
         room.title.setText(items.get(position).title);
         room.contents.setText(items.get(position).contents);
         room.date.setText(items.get(position).date);
+
+
 
         return convertView;
     }

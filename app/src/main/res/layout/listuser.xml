@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".AuthActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tab_container">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:id="@+id/title_l"
+            android:text="차량보유자"
+            android:textSize="28sp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="12dp"
+            />
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:id="@+id/lay2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_l">
+            <include layout="@layout/divider"/>
+            <ListView
+                android:id="@+id/list1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </ListView>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <include layout="@layout/divider"/>
+
+    <include layout="@layout/tab_bar"/>
+</RelativeLayout>
