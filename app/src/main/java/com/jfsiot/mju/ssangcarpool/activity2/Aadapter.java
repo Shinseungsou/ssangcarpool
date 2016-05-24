@@ -1,6 +1,7 @@
 package com.jfsiot.mju.ssangcarpool.activity2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +10,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jfsiot.mju.ssangcarpool.R;
+import com.jfsiot.mju.ssangcarpool.activity.HistoryDetailActivity;
 import com.jfsiot.mju.ssangcarpool.activity2.Room;
+import com.jfsiot.mju.ssangcarpool.model.data.Carpooler;
+import com.jfsiot.mju.ssangcarpool.model.data.Path;
+import com.jfsiot.mju.ssangcarpool.model.unique.HistoryDetail;
 
 import java.util.List;
+
+import timber.log.Timber;
 
 /**
  * Created by User on 2016-04-16.
@@ -46,7 +53,7 @@ public class Aadapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         RoomViewHolder room;
         //if(convertView == null){
         convertView = inflater.inflate(layout_res_id, parent, false);
@@ -60,6 +67,32 @@ public class Aadapter extends BaseAdapter{
         room.departure_name.setText(items.get(position).departure_name);
         room.destination_name.setText(items.get(position).destination_name);
         room.date.setText(items.get(position).date);
+
+
+        final int p = position;
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, HistoryDetailActivity.class);
+
+                Path path = new Path();
+                path.destination = items.get(position).destination_name;
+                path.origination = items.get(position).departure_name;
+                path.date = items.get(position).date;
+                path.carpooler_type = "차량 보유자";
+
+                Carpooler carpooler = new Carpooler();
+                carpooler.user.name = "shin";
+                carpooler.origination="서울ic";
+                carpooler.destination="수원ic";
+
+                HistoryDetail.getInstance().setCarpooler(carpooler);
+                HistoryDetail.getInstance().setPath(path);
+
+                context.startActivity(intent);
+            }
+        });
         return convertView;
     }
     public class RoomViewHolder{

@@ -45,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity{
         ((RatingBar) findViewById(R.id.avg_rating)).setProgress(4);
 
         //ArrayAdapter<String> adapter;
-        Aadapter aadapter1 = new Aadapter(this, R.layout.relativepra2,arDessert);
+        Aadapter aadapter1 = new Aadapter(this, R.layout.relativepra2, arDessert);
 
         final ArrayList<Room2> room2 = new ArrayList<>();
         room2.add(new Room2("권동섭","운전 잘하십니다.",4 ));
