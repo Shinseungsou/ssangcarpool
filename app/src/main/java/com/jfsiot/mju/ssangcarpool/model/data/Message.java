@@ -6,6 +6,7 @@ import java.util.List;
  * Created by mj on 2016-04-16.
  */
 public class Message {
+    public int uid;
     public int image;
     public String title;
     public String contents;
