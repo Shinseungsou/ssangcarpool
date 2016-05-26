@@ -1,8 +1,7 @@
-package com.jfsiot.mju.ssangcarpool.activity2;
+package com.jfsiot.mju.ssangcarpool.adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jfsiot.mju.ssangcarpool.R;
+import com.jfsiot.mju.ssangcarpool.model.data.Message;
 import com.jfsiot.mju.ssangcarpool.dialog.MessageDialog;
 import com.jfsiot.mju.ssangcarpool.dialog.ReplyMsgDialog;
 

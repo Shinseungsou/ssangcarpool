@@ -1,4 +1,4 @@
-package com.jfsiot.mju.ssangcarpool.activity2;
+package com.jfsiot.mju.ssangcarpool.model.data;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public class Message {
     public String contents;
     public String date;
 
-    Message(int i, String t, String c, String d){
+    public Message(int i, String t, String c, String d){
         image = i; title = t; contents =c; date = d;
     }
 }

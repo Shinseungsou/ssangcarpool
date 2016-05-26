@@ -16,19 +16,19 @@ public class ApiManager {
         /* Build RestAdapter */
         RestAdapter.Builder builder = new RestAdapter.Builder();
         if(BuildConfig.DEBUG) { // Debug Mode
-            builder.setEndpoint(String.format("https://%s/api/%s/", AppConst.API.API_BASE_DEBUG, AppConst.API.API_VERSION_DEBUG));
+            builder.setEndpoint(String.format("https://%s", AppConst.API.API_BASE_DEBUG));
             builder.setClient(new OkClient(new OkHttpClient()));
 //            builder.setExecutors(executor, executor);
             builder.setLogLevel(loglevel);
             builder.setLog(logger);
         } else { // Release Mode
-            builder.setEndpoint(String.format("https://%s/api/%s/", AppConst.API.API_BASE_RELEASE, AppConst.API.API_VERSION_RELEASE));
+            builder.setEndpoint(String.format("https://%s", AppConst.API.API_BASE_RELEASE));
             builder.setClient(new OkClient(new OkHttpClient()));
 //            builder.setExecutors(executor, executor);
         }
         return builder.build();
     }
-    public static ApiGoogleMaps createGoogleMapsApi(Context context, RestAdapter.LogLevel loglevel, RestAdapter.Log logger) {
-        return getRestAdapter(context, loglevel, logger).create(ApiGoogleMaps.class);
+    public static Call createGoogleMapsApi(Context context, RestAdapter.LogLevel loglevel, RestAdapter.Log logger) {
+        return getRestAdapter(context, loglevel, logger).create(Call.class);
     }
 }

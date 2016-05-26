@@ -18,10 +18,18 @@ public class MapRoute {
     }
 
     public MapRoute(){
-
+        clear();
     }
     public void update(MapPOIData origination, MapPOIData destination){
         update(origination, destination, null);
+    }
+
+    public void clear(){
+        originationPOIData = null;
+        destinationPOIData = null;
+        pointOrigination = null;
+        pointDestination = null;
+        route = null;
     }
 
     public void update(MapPOIData origination, MapPOIData destination, TMapPolyLine polyLine){

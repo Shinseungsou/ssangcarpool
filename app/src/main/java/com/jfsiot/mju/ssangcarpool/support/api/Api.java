@@ -8,22 +8,22 @@ public class Api {
     }
 
     /* Instance Creation */
-    private Api(ApiGoogleMaps apiGoogleMaps) {
-        this.googleMapsApi = apiGoogleMaps;
+    private Api(Call Call) {
+        this.call = Call;
     }
 
     /**
      * Only triggered when first triggered.
-     * @param apiGoogleMaps
+     * @param Call
      */
-    public static synchronized void createInstance(ApiGoogleMaps apiGoogleMaps) {
+    public static synchronized void createInstance(Call Call) {
         if(Api.instance != null) return;
-        Api.instance = new Api(apiGoogleMaps);
+        Api.instance = new Api(Call);
     }
 
     /* Register Api*/
-    private final ApiGoogleMaps googleMapsApi;
-    public static ApiGoogleMaps googleMaps() {
-        return Api.instance.googleMapsApi;
+    private final Call call;
+    public static Call call() {
+        return Api.instance.call;
     }
 }

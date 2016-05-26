@@ -10,12 +10,15 @@ import rx.Observable;
 /**
  * Created by SSS on 2016-04-15.
  */
-public interface ApiGoogleMaps {
+public interface Call {
     @GET("/json")
     Observable<DirectionsResult> getDirections(
         @Query("origin") String origin,
         @Query("destination") String destinaton,
         @Query("key") String key,
         @Query("sensor") Boolean sensor
+    );
+    @GET("/user")
+    Observable<VoidResponse> get(
     );
 }

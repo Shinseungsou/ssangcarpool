@@ -8,9 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jfsiot.mju.ssangcarpool.R;
-import com.jfsiot.mju.ssangcarpool.activity2.Message;
-
-import java.util.zip.Inflater;
+import com.jfsiot.mju.ssangcarpool.model.data.Message;
 
 /**
  * Created by 박현민 on 2016-05-20.

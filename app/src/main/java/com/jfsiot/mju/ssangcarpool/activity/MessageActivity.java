@@ -1,10 +1,12 @@
-package com.jfsiot.mju.ssangcarpool.activity2;
+package com.jfsiot.mju.ssangcarpool.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.jfsiot.mju.ssangcarpool.R;
+import com.jfsiot.mju.ssangcarpool.model.data.Message;
+import com.jfsiot.mju.ssangcarpool.adapter.MessageAdapter;
 
 import java.util.ArrayList;
 

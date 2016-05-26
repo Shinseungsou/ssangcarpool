@@ -9,6 +9,7 @@ public class Carpooler {
     public String origination;
     public String destination;
     public String date;
+    public int carpoolerType;
 
     public Carpooler(){
         this.user = new User();

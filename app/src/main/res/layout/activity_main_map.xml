@@ -64,4 +64,69 @@
         android:visibility="gone"
         android:background="#fff"/>
     <include layout="@layout/tab_bar"/>
+    <RelativeLayout
+        android:id="@+id/path_register_container"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:background="#fff">
+
+        <TextView
+            android:id="@+id/label_carpooler_type"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_above="@+id/carpooler_type"
+            android:layout_alignLeft="@+id/carpooler_type"
+            android:text="타입"/>
+        <TextView
+            android:id="@+id/carpooler_type"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/path_datepicker"
+            android:layout_marginLeft="8dp"
+            android:gravity="center"
+            android:hint="사용자 타입"/>
+        <TextView
+            android:id="@+id/label_path_datepicker"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_above="@+id/path_datepicker"
+            android:layout_alignLeft="@+id/path_datepicker"
+            android:text="날짜"/>
+        <TextView
+            android:id="@+id/label_path_timepicker"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_above="@+id/path_timepicker"
+            android:layout_alignLeft="@+id/path_timepicker"
+            android:text="출발 시간"/>
+        <TextView
+            android:id="@+id/path_datepicker"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:layout_toLeftOf="@+id/path_timepicker"
+            android:layout_marginLeft="8dp"
+            android:hint="날짜 선택"/>
+        <TextView
+            android:id="@+id/path_timepicker"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/path_register_button"
+            android:layout_marginLeft="8dp"
+            android:gravity="center"
+            android:hint="시간 선택"/>
+        <TextView
+            android:id="@+id/path_register_button"
+            android:layout_alignParentRight="true"
+            android:layout_width="80dp"
+            android:layout_height="64dp"
+            android:layout_marginLeft="8dp"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:text="등록"/>
+    </RelativeLayout>
 </RelativeLayout>

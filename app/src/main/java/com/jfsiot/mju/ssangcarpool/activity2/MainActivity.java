@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.jfsiot.mju.ssangcarpool.R;
+import com.jfsiot.mju.ssangcarpool.activity.MessageActivity;
 
 public class MainActivity extends AppCompatActivity {
     Button Button_1;

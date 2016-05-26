@@ -36,7 +36,7 @@
         <activity android:name=".activity2.MainActivity"/>
         <activity android:name=".activity2.MainActivity_h"/>
         <activity android:name=".activity2.SignUpActivity"/>
-        <activity android:name=".activity2.MessageActivity"/>
+        <activity android:name=".activity.MessageActivity"/>
         <activity android:name=".activity2.PassengerActivity"/>
         <activity android:name=".activity2.ProfileActivity"/>
     </application>
