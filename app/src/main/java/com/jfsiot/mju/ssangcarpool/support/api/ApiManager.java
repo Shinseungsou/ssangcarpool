@@ -16,13 +16,13 @@ public class ApiManager {
         /* Build RestAdapter */
         RestAdapter.Builder builder = new RestAdapter.Builder();
         if(BuildConfig.DEBUG) { // Debug Mode
-            builder.setEndpoint(String.format("https://%s", AppConst.API.API_BASE_DEBUG));
+            builder.setEndpoint(String.format("http://%s", AppConst.API.API_BASE_DEBUG));
             builder.setClient(new OkClient(new OkHttpClient()));
 //            builder.setExecutors(executor, executor);
             builder.setLogLevel(loglevel);
             builder.setLog(logger);
         } else { // Release Mode
-            builder.setEndpoint(String.format("https://%s", AppConst.API.API_BASE_RELEASE));
+            builder.setEndpoint(String.format("http://%s", AppConst.API.API_BASE_RELEASE));
             builder.setClient(new OkClient(new OkHttpClient()));
 //            builder.setExecutors(executor, executor);
         }

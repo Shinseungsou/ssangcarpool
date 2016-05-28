@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.jfsiot.mju.ssangcarpool.R;
 import com.jfsiot.mju.ssangcarpool.activity.MessageActivity;
+import com.jfsiot.mju.ssangcarpool.activity.SignUpActivity;
 
 public class MainActivity extends AppCompatActivity {
     Button Button_1;

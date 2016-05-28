@@ -26,7 +26,7 @@
         </activity>
         <activity android:name=".activity.MainMapActivity">
         </activity>
-        <activity android:name=".activity.SignUpActivity">
+        <activity android:name=".activity2.SignUpActivity2">
         </activity>
         <activity android:name=".activity.NavigationActivity"/>
         <activity android:name=".activity2.ListUserActivity"/>
@@ -35,7 +35,7 @@
         <activity android:name=".activity2.RiderActivity"/>
         <activity android:name=".activity2.MainActivity"/>
         <activity android:name=".activity2.MainActivity_h"/>
-        <activity android:name=".activity2.SignUpActivity"/>
+        <activity android:name=".activity.SignUpActivity"/>
         <activity android:name=".activity.MessageActivity"/>
         <activity android:name=".activity2.PassengerActivity"/>
         <activity android:name=".activity2.ProfileActivity"/>

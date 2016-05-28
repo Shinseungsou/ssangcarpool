@@ -24,7 +24,7 @@
             android:layout_marginTop="8dp"/>
 
         <EditText
-            android:id="@+id/signup_editText_1"
+            android:id="@+id/signup_id"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/signup_textview_1"
@@ -51,7 +51,7 @@
             android:layout_marginTop="8dp"/>
 
         <EditText
-            android:id="@+id/signup_editText_2"
+            android:id="@+id/signup_pw"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/signup_textview_2"
@@ -76,7 +76,7 @@
             android:layout_marginTop="8dp"/>
 
         <EditText
-            android:id="@+id/signup_editText_3"
+            android:id="@+id/signup_name"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/signup_textview_3"
@@ -101,7 +101,7 @@
             android:layout_marginTop="8dp"/>
 
         <EditText
-            android:id="@+id/signup_editText_4"
+            android:id="@+id/signup_nickname"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/signup_textview_4"
@@ -126,7 +126,7 @@
             android:layout_marginTop="8dp"/>
 
         <EditText
-            android:id="@+id/signup_editText_5"
+            android:id="@+id/signup_gender"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/signup_textview_5"
@@ -151,7 +151,7 @@
             android:layout_marginTop="8dp"/>
 
         <EditText
-            android:id="@+id/signup_editText_6"
+            android:id="@+id/signup_phonenumber"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/signup_textview_6"
@@ -176,7 +176,7 @@
             android:layout_marginTop="8dp"/>
 
         <EditText
-            android:id="@+id/signup_editText_7"
+            android:id="@+id/signup_email"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/signup_textview_7"
@@ -185,50 +185,19 @@
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/signup_button"
+    <TextView
+        android:id="@+id/signup_signup_button"
         android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@+id/signup_layout_8"
         android:text="가입하기"
         android:textSize="20dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:background="#aaf"
         android:layout_centerHorizontal = "true"
         android:layout_marginTop="16dp"/>
 
         </RelativeLayout>
-
-
-    <!--<LinearLayout-->
-        <!--android:id="@+id/tab_container"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="80dp"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!-->-->
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="0.25"-->
-            <!--android:gravity="center"-->
-            <!--android:text="tab1"/>-->
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="0.25"-->
-            <!--android:gravity="center"-->
-            <!--android:text="tab1"/>-->
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="0.25"-->
-            <!--android:gravity="center"-->
-            <!--android:text="tab1"/>-->
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="0.25"-->
-            <!--android:gravity="center"-->
-            <!--android:text="tab1"/>-->
-    <!--</LinearLayout>-->
-
 </RelativeLayout>

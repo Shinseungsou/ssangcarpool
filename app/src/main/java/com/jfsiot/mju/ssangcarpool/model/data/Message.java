@@ -1,7 +1,5 @@
 package com.jfsiot.mju.ssangcarpool.model.data;
 
-import java.util.List;
-
 /**
  * Created by mj on 2016-04-16.
  */
