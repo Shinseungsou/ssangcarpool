@@ -27,25 +27,30 @@ public class AuthActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, AppConst.APP_PERMISSION.GPS);
         authId = ((EditText) findViewById(R.id.auth_id));
         authPw = ((EditText) findViewById(R.id.auth_pw));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         findViewById(R.id.auth_sign_in).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Api.call().postUsersSignin(authId.getText().toString(), authPw.getText().toString())
-                        .subscribe(new Action1<SimpleResponse>() {
-                            @Override
-                            public void call(SimpleResponse simpleResponse) {
-                                if (simpleResponse.result) {
-                                    Intent intent = new Intent(AuthActivity.this, MainMapActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
+                    .subscribe(new Action1<SimpleResponse>() {
+                        @Override
+                        public void call(SimpleResponse simpleResponse) {
+                            if (simpleResponse.result) {
+                                Intent intent = new Intent(AuthActivity.this, MainMapActivity.class);
+                                startActivity(intent);
+                                finish();
                             }
-                        }, new Action1<Throwable>() {
-                            @Override
-                            public void call(Throwable throwable) {
-                                throwable.printStackTrace();
-                            }
-                        });
+                        }
+                    }, new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+                            throwable.printStackTrace();
+                        }
+                    });
             }
         });
         findViewById(R.id.auth_sign_up).setOnClickListener(new View.OnClickListener() {
