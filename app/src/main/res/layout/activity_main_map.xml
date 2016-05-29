@@ -50,7 +50,7 @@
         android:layout_alignRight="@+id/searchview_container"
         android:layout_below="@+id/searchview_container"
         android:layout_marginTop="8dp"
-        android:src="@drawable/ic_gps_not_fixed_black_24dp"
+        android:src="@drawable/ic_navigation_black_24dp"
         android:background="@drawable/view_border"
         android:padding="8dp"/>
     <ListView
@@ -69,6 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_alignParentBottom="true"
+        android:visibility="gone"
         android:background="#fff">
 
         <TextView

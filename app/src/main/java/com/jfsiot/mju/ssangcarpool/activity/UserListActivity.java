@@ -1,4 +1,4 @@
-package com.jfsiot.mju.ssangcarpool.activity2;
+package com.jfsiot.mju.ssangcarpool.activity;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.jfsiot.mju.ssangcarpool.R;
+import com.jfsiot.mju.ssangcarpool.activity2.ListUserAdapter;
+import com.jfsiot.mju.ssangcarpool.model.data.Carpooler;
 import com.jfsiot.mju.ssangcarpool.model.data.PassengerName;
 
 import java.util.ArrayList;
@@ -15,22 +17,25 @@ import java.util.ArrayList;
  * Created by User on 2016-05-20.
  */
 
-public class ListUserActivity extends AppCompatActivity {
+public class UserListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listuser);
 
-        ArrayList<PassengerName> arDessert = new ArrayList<PassengerName>();
+        ArrayList<PassengerName> userList = new ArrayList<>();
         //Room item1 = new Room(R.drawable.capture,"제목","캬르르르를르를르르르를르ㅡㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ르르르르르를르르르르르르르르르르르르르르르르ㅡ를륵" );
         //item1.image = R.drawable.capture;
         //item1.title = "제목";
         //item1.contents = "캬르르르를르를르르르를르ㅡㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ르르르르르를르르르르르르르르르르르르르르르르ㅡ를륵";
-        arDessert.add(new PassengerName("기흥역",  "명지대 사거리" ,"2016년 4월 5일" ));
-        arDessert.add(new PassengerName("기흥역",   "강남역","2016년 2월 1일" ));
-        arDessert.add(new PassengerName("도봉역",   "화정역","2016년 1월 30일" ));
-        arDessert.add(new PassengerName("쌍용역" ,  "분당역","2016년 1월 2일" ));
-        arDessert.add(new PassengerName("사당역" , "명지대","2015년 12월 31일" ));
+        userList.add(new PassengerName("기흥역",  "명지대 사거리" ,"2016년 4월 5일" ));
+        userList.add(new PassengerName("기흥역",   "강남역","2016년 2월 1일" ));
+        userList.add(new PassengerName("도봉역",   "화정역","2016년 1월 30일" ));
+        userList.add(new PassengerName("쌍용역" ,  "분당역","2016년 1월 2일" ));
+        userList.add(new PassengerName("사당역" , "명지대","2015년 12월 31일" ));
+
+        ArrayList<Carpooler> carpoolers = new ArrayList<>();
+        carpoolers.add(new Carpooler());
         //arDessert.add("List1");
         //arDessert.add("List2");
         //arDessert.add("List3");
@@ -41,7 +46,7 @@ public class ListUserActivity extends AppCompatActivity {
         // Aadapter aadapter1 = new Aadapter(this, R.layout.relativepra2,arDessert);
 
 
-        ListUserAdapter listUserAdapter = new ListUserAdapter(this, R.layout.relativepra2,arDessert);
+        ListUserAdapter listUserAdapter = new ListUserAdapter(this, R.layout.relativepra2,userList);
 
         ListView list1 = (ListView) findViewById(R.id.list1);
         list1.setAdapter(listUserAdapter);

@@ -26,7 +26,6 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.jfsiot.mju.ssangcarpool.R;
-import com.jfsiot.mju.ssangcarpool.activity2.ListUserActivity;
 import com.jfsiot.mju.ssangcarpool.activity2.ProfileActivity;
 import com.jfsiot.mju.ssangcarpool.adapter.OnItemClickListener;
 import com.jfsiot.mju.ssangcarpool.adapter.SearchAdapter;
@@ -84,7 +83,7 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_map);
-        tmap = new TMapView(this);
+        tmap = new TMapView(this.getBaseContext());
         tmap.setSKPMapApiKey(getResources().getString(R.string.tmap_api_server_key));
         tmap.setLanguage(TMapView.LANGUAGE_KOREAN);
         tmap.setIconVisibility(true);
@@ -261,7 +260,7 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
         }else if(v.getId() == this.tabProfile.getId()){
             changeToActivity(ProfileActivity.class);
         }else if(v.getId() == this.tabEvaluation.getId()){
-            changeToActivity(ListUserActivity.class);
+            changeToActivity(UserListActivity.class);
         }else if(v.getId() == this.tabOther.getId()){
             changeToActivity(MessageActivity.class);
         }else if(v.getId() == this.gpsButton.getId()){

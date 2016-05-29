@@ -1,10 +1,10 @@
 package com.jfsiot.mju.ssangcarpool.activity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.EditText;
 
@@ -14,9 +14,8 @@ import com.jfsiot.mju.ssangcarpool.model.response.SimpleResponse;
 import com.jfsiot.mju.ssangcarpool.support.api.Api;
 
 import rx.functions.Action1;
-import timber.log.Timber;
 
-public class AuthActivity extends AppCompatActivity {
+public class AuthActivity extends Activity {
     private EditText authPw;
     private EditText authId;
 

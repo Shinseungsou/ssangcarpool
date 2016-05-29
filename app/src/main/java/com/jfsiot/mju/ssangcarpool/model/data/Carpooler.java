@@ -14,4 +14,7 @@ public class Carpooler {
     public Carpooler(){
         this.user = new User();
     }
+    public void update(User user, int uid, String origination, String destination, String data, int carpoolerType){
+
+    }
 }

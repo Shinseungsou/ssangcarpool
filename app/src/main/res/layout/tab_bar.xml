@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/tab_container"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
+    android:layout_height="56dp"
     android:orientation="horizontal"
     android:layout_alignParentBottom="true"
     >
@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:src="@drawable/ic_mail_outline_black_24dp"
-        android:padding="8dp"
+        android:padding="16dp"
         android:layout_weight="0.25"
         android:gravity="center"
         />
@@ -23,7 +23,7 @@
         android:layout_height="match_parent"
         android:layout_weight="0.25"
         android:gravity="center"
-        android:padding="8dp"
+        android:padding="16dp"
         />
     <ImageView
         android:id="@+id/tab_eval"
@@ -32,7 +32,7 @@
         android:layout_height="match_parent"
         android:layout_weight="0.25"
         android:gravity="center"
-        android:padding="8dp"
+        android:padding="16dp"
         />
     <ImageView
         android:id="@+id/tab_other"
@@ -41,6 +41,6 @@
         android:layout_height="match_parent"
         android:layout_weight="0.25"
         android:gravity="center"
-        android:padding="8dp"
+        android:padding="16dp"
         />
 </LinearLayout>

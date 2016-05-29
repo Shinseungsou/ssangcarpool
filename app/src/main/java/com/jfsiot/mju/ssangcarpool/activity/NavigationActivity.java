@@ -3,6 +3,7 @@ package com.jfsiot.mju.ssangcarpool.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -104,12 +105,24 @@ public class NavigationActivity extends Activity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         if(v.getId() == searchOrigination.getId()){
+            items.clear();
+            if(originationPOIData != null) searchView.setText(originationPOIData.getName());
+            else searchView.setText("");
+            searchView.setSelection(searchView.getText().length());
             viewSearch.setVisibility(View.VISIBLE);
             state = STATE.ORIGINATION;
+
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
             searchView.requestFocus();
         }else if(v.getId() == searchDestination.getId()){
+            items.clear();
+            if(destinationPOIData != null) searchView.setText(destinationPOIData.getName());
+            else searchView.setText("");
+            searchView.setSelection(searchView.getText().length());
             viewSearch.setVisibility(View.VISIBLE);
             state = STATE.DESTINATION;
+
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
             searchView.requestFocus();
         }else if(v.getId() == routeSearchButton.getId()){
             MapRoute.getInstance().update(originationPOIData, destinationPOIData);
