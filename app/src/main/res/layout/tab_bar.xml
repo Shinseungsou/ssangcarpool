@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/tab_container"
     android:layout_width="match_parent"
-    android:layout_height="64dp"
+    android:layout_height="48dp"
     android:orientation="horizontal"
     android:layout_alignParentBottom="true"
     >
@@ -11,40 +11,36 @@
         android:id="@+id/tab_msg"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:src="@drawable/message"
-        android:padding="14dp"
-        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_mail_outline_black_24dp"
+        android:padding="8dp"
         android:layout_weight="0.25"
         android:gravity="center"
         />
     <ImageView
         android:id="@+id/tab_profile"
         android:layout_width="0dp"
-        android:src="@drawable/dotman"
+        android:src="@drawable/ic_person_outline_black_24dp"
         android:layout_height="match_parent"
-        android:layout_marginTop="13dp"
         android:layout_weight="0.25"
         android:gravity="center"
-        android:padding="14dp"
+        android:padding="8dp"
         />
     <ImageView
         android:id="@+id/tab_eval"
         android:layout_width="0dp"
-        android:src="@drawable/review"
+        android:src="@drawable/ic_event_note_black_24dp"
         android:layout_height="match_parent"
-        android:layout_marginTop="15dp"
         android:layout_weight="0.25"
         android:gravity="center"
-        android:padding="14dp"
+        android:padding="8dp"
         />
     <ImageView
         android:id="@+id/tab_other"
         android:layout_width="0dp"
-        android:src="@drawable/dotdot"
+        android:src="@drawable/ic_more_horiz_black_24dp"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
         android:layout_weight="0.25"
         android:gravity="center"
-        android:padding="14dp"
+        android:padding="8dp"
         />
 </LinearLayout>
