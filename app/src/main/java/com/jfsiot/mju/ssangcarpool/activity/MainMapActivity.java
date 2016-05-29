@@ -241,7 +241,9 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
 
         TMapData tMapData = new TMapData();
         MapPOIData mapPOIData = ((MapPOIData) adapter.getItem(positiion));
-        tmap.setCenterPoint(Double.parseDouble(mapPOIData.getCenterLon()), Double.parseDouble(mapPOIData.getCenterLat()));
+//        tmap.setCenterPoint(Double.parseDouble(mapPOIData.getCenterLon()), Double.parseDouble(mapPOIData.getCenterLat()));
+        tmap.setLocationPoint(Double.parseDouble(mapPOIData.getCenterLon()), Double.parseDouble(mapPOIData.getCenterLat()));
+        this.searchView.setText(mapPOIData.getName());
 
 //        tMapData.findPathData(new TMapPoint(currentLocation.getLatitude(), currentLocation.getLongitude()), new TMapPoint(Double.parseDouble(items.get(positiion).getCenterLat()), Double.parseDouble(items.get(positiion).getCenterLon())), new TMapData.FindPathDataListenerCallback() {
 //            @Override
