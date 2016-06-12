@@ -23,7 +23,7 @@
         android:id="@+id/received_date"
         android:layout_width="match_parent"
         android:layout_height="16dp"
-        android:layout_toRightOf="@+id/profile_image"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/sender_name"
         android:layout_marginLeft="56dp"
         android:layout_marginRight="24dp"

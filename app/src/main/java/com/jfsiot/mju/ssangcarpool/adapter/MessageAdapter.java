@@ -73,10 +73,6 @@ public class MessageAdapter extends BaseAdapter{
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //               AlertDialog.Builder message_dialog = new AlertDialog.Builder(context);
-                //               message_dialog.setMessage(items.get(position).contents).show();
-
-
                 MessageDialog messageDialog = new MessageDialog(context);
                 messageDialog.setMessageView(items.get(position));
                 messageDialog.setPositiveButton("답장", new DialogInterface.OnClickListener() {
@@ -94,32 +90,29 @@ public class MessageAdapter extends BaseAdapter{
 
 
                 messageDialog.show();
-
-
-
             }
         });
 
 
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
-//                alertBuilder.setMessage(items.get(position).contents).show();
-
-                MessageDialog messageDialog = new MessageDialog(context);
-                messageDialog.setMessageView(items.get(position));
-                messageDialog.setPositiveButton("답장", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(context, "답장이 전송되었습니다.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                messageDialog.setNegativeButton("확인", new DialogInterface.OnClickListener() { @Override public void onClick(DialogInterface dialog, int which) { } });
-                messageDialog.setNeutralButton("중간", new DialogInterface.OnClickListener() { @Override public void onClick(DialogInterface dialog, int which) { } });
-                messageDialog.show();
-            }
-        });
+//        convertView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
+////                alertBuilder.setMessage(items.get(position).date).show();
+//
+//                MessageDialog messageDialog = new MessageDialog(context);
+//                messageDialog.setMessageView(items.get(position));
+//                messageDialog.setPositiveButton("답장", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        Toast.makeText(context, "답장이 전송되었습니다.", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//                messageDialog.setNegativeButton("확인", new DialogInterface.OnClickListener() { @Override public void onClick(DialogInterface dialog, int which) { } });
+//                messageDialog.setNeutralButton("중간", new DialogInterface.OnClickListener() { @Override public void onClick(DialogInterface dialog, int which) { } });
+//                messageDialog.show();
+//            }
+//        });
         room = new RoomViewHolder();
         room.imageview = (ImageView)convertView.findViewById(R.id.message_imageView_1);
         room.title = (TextView)convertView.findViewById(R.id.message_textView_1);

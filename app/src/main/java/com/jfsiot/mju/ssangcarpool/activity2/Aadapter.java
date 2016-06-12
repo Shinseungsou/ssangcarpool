@@ -6,19 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jfsiot.mju.ssangcarpool.R;
 import com.jfsiot.mju.ssangcarpool.activity.HistoryDetailActivity;
-import com.jfsiot.mju.ssangcarpool.activity2.Room;
 import com.jfsiot.mju.ssangcarpool.model.data.Carpooler;
 import com.jfsiot.mju.ssangcarpool.model.data.Path;
 import com.jfsiot.mju.ssangcarpool.model.unique.HistoryDetail;
 
 import java.util.List;
-
-import timber.log.Timber;
 
 /**
  * Created by User on 2016-04-16.
@@ -83,7 +79,7 @@ public class Aadapter extends BaseAdapter{
                 path.carpooler_type = "차량 보유자";
 
                 Carpooler carpooler = new Carpooler();
-                carpooler.user.name = "shin";
+                carpooler.userData.name = "shin";
                 carpooler.origination="서울ic";
                 carpooler.destination="수원ic";
 

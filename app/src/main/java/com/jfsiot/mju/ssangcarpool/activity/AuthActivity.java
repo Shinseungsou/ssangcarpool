@@ -10,7 +10,8 @@ import android.widget.EditText;
 
 import com.jfsiot.mju.ssangcarpool.R;
 import com.jfsiot.mju.ssangcarpool.config.AppConst;
-import com.jfsiot.mju.ssangcarpool.model.response.SimpleResponse;
+import com.jfsiot.mju.ssangcarpool.model.response.UserResponse;
+import com.jfsiot.mju.ssangcarpool.model.unique.User;
 import com.jfsiot.mju.ssangcarpool.support.api.Api;
 
 import rx.functions.Action1;
@@ -35,10 +36,11 @@ public class AuthActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Api.call().postUsersSignin(authId.getText().toString(), authPw.getText().toString())
-                    .subscribe(new Action1<SimpleResponse>() {
+                    .subscribe(new Action1<UserResponse>() {
                         @Override
-                        public void call(SimpleResponse simpleResponse) {
-                            if (simpleResponse.result) {
+                        public void call(UserResponse response) {
+                            if (response.result) {
+                                User.getInstance().setUserData(response.user);
                                 Intent intent = new Intent(AuthActivity.this, MainMapActivity.class);
                                 startActivity(intent);
                                 finish();

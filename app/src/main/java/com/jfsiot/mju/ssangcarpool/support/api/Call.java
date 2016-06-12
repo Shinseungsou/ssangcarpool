@@ -2,8 +2,10 @@ package com.jfsiot.mju.ssangcarpool.support.api;
 
 import com.google.maps.model.DirectionsResult;
 import com.jfsiot.mju.ssangcarpool.model.response.SimpleResponse;
+import com.jfsiot.mju.ssangcarpool.model.response.UserResponse;
 import com.jfsiot.mju.ssangcarpool.model.response.VoidResponse;
 
+import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.Query;
@@ -34,8 +36,20 @@ public interface Call {
         @Query("gender") String gender
     );
     @POST("/users/signin")
-    Observable<SimpleResponse> postUsersSignin(
+    Observable<UserResponse> postUsersSignin(
             @Query("id") String id,
             @Query("pw") String pw
     );
+    @POST("/path/register")
+    Observable<SimpleResponse> postPathRegister(
+            @Query("id") Integer id,
+            @Body String route,
+            @Query("from_lat") Double from_lat,
+            @Query("from_lon") Double from_lon,
+            @Query("to_lat") Double to_lat,
+            @Query("to_lon") Double to_lon,
+            @Query("carpooler_type") Integer carpooler,
+            @Query("date_time") String datetime,
+            @Query("duration") Double duraion
+            );
 }

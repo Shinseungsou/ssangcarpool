@@ -3,7 +3,7 @@ package com.jfsiot.mju.ssangcarpool.model.data;
 /**
  * Created by SSS on 2016-05-24.
  */
-public class User {
+public class UserData {
     public int uid;
     public String id;
     public String name;

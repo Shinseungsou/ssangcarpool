@@ -24,13 +24,18 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.jfsiot.mju.ssangcarpool.R;
 import com.jfsiot.mju.ssangcarpool.activity2.ProfileActivity;
 import com.jfsiot.mju.ssangcarpool.adapter.OnItemClickListener;
 import com.jfsiot.mju.ssangcarpool.adapter.SearchAdapter;
+import com.jfsiot.mju.ssangcarpool.model.data.Path;
 import com.jfsiot.mju.ssangcarpool.model.map.MapPOIData;
 import com.jfsiot.mju.ssangcarpool.model.map.MapRoute;
+import com.jfsiot.mju.ssangcarpool.model.response.SimpleResponse;
+import com.jfsiot.mju.ssangcarpool.model.unique.User;
 import com.jfsiot.mju.ssangcarpool.support.api.Api;
 import com.skp.Tmap.TMapData;
 import com.skp.Tmap.TMapGpsManager;
@@ -44,6 +49,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 
+import rx.functions.Action1;
 import timber.log.Timber;
 
 public class MainMapActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback, OnItemClickListener, View.OnClickListener, onLocationChangedCallback {
@@ -74,6 +80,7 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
 
     private boolean gpsOpened;
     private List<MapPOIData> items;
+    private Path path;
 
     private SearchAdapter adapter;
 
@@ -95,6 +102,7 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
         tMapGpsManager.setMinDistance(5);
         tMapGpsManager.setProvider(TMapGpsManager.LOCATION_SERVICE);
 //        tMapGpsManager.OpenGps();
+        path = new Path();
 
         ((FrameLayout) findViewById(R.id.maps_map)).addView(tmap);
         this.searchResult = (ListView) findViewById(R.id.search_result);
@@ -147,7 +155,6 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
 
         gpsButton.setOnClickListener(this);
         navigationButton.setOnClickListener(this);
-        Api.call().get().subscribe();
 
         this.searchButton = ((ImageView) findViewById(R.id.search_button));
         this.searchButton.setOnClickListener(new View.OnClickListener() {
@@ -281,7 +288,7 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
             new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    pathDatePicker.setText(year+"년 "+monthOfYear+"월 "+dayOfMonth+"일");
+                    pathDatePicker.setText(year+"-"+monthOfYear+"-"+dayOfMonth);
                 }
             }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)).show();
         }else if(v.getId() == this.pathTimePicker.getId()) {
@@ -289,7 +296,7 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
             new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    pathTimePicker.setText(hourOfDay+"시 "+minute+"분");
+                    pathTimePicker.setText(hourOfDay+":"+minute);
                 }
             }, calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE), true).show();
         }else if(v.getId() == this.carpoolerType.getId()){
@@ -299,12 +306,32 @@ public class MainMapActivity extends AppCompatActivity implements ActivityCompat
                 public void onClick(DialogInterface dialog, int which) {
                     carpoolerType.setText(((AlertDialog) dialog).getListView()
                             .getItemAtPosition(which).toString());
+                    path.carpooler_type_int = which;
                 }
             }).show();
         }else if(v.getId() == this.pathRegisterButton.getId()){
-            setMapMode(MAPMODE.MAP);
+            if(carpoolerType.getText().length() < 1 || pathDatePicker.getText().length() < 1 || pathTimePicker.getText().length() < 1){
+                Toast.makeText(this, "모든 항목을 입력해주세요", Toast.LENGTH_SHORT).show();
+            }else {
+                Gson gson = new Gson();
+                String route = gson.toJson(MapRoute.getInstance().getRoute());
+                Timber.d("route size : %s\n%s", route.length(), route);
+                Api.call().postPathRegister(User.getInstance().getUserData().uid, route, MapRoute.getInstance().getPointOrigination().getLatitude(), MapRoute.getInstance().getPointOrigination().getLongitude(), MapRoute.getInstance().getPointDestination().getLatitude(), MapRoute.getInstance().getPointDestination().getLongitude(), path.carpooler_type_int, pathDatePicker.getText().toString()+" "+pathTimePicker.getText().toString(), MapRoute.getInstance().getRoute().getDistance() / 60)
+                        .subscribe(
+                                new Action1<SimpleResponse>() {
+                                    @Override
+                                    public void call(SimpleResponse simpleResponse) {
+                                        if (simpleResponse.result) {
+                                            changeToActivity(UserListActivity.class);
+                                            setMapMode(MAPMODE.MAP);
+                                        }
+                                    }
+                                }
+                        );
+            }
         }
     }
+
 
     public void changeToActivity(Class activity){
         Intent intent = new Intent(this, activity);

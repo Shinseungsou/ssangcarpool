@@ -8,4 +8,5 @@ public class Path {
     public String destination;
     public String date;
     public String carpooler_type;
+    public Integer carpooler_type_int;
 }

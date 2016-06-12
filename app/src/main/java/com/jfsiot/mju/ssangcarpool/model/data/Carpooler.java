@@ -5,16 +5,25 @@ package com.jfsiot.mju.ssangcarpool.model.data;
  */
 public class Carpooler {
     public int uid;
-    public User user;
+    public UserData userData;
     public String origination;
     public String destination;
     public String date;
     public int carpoolerType;
 
     public Carpooler(){
-        this.user = new User();
+        this.userData = new UserData();
     }
-    public void update(User user, int uid, String origination, String destination, String data, int carpoolerType){
+    public void update(UserData userData, int uid, String origination, String destination, String data, int carpoolerType){
 
+    }
+
+    public String getCarpoolerTypeString(){
+        switch (carpoolerType){
+            case 1:return "차량보유자";
+            case 2: return "탑승희망자";
+            case 3: return "스쿠터보유자";
+            default: return "";
+        }
     }
 }

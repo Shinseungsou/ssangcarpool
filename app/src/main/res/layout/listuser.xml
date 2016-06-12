@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:id="@+id/title_l"
-            android:text="차량보유자"
+            android:text="탑승 희망자"
             android:textSize="28sp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="12dp"

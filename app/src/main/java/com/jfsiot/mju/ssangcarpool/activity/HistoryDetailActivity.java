@@ -32,7 +32,7 @@ public class HistoryDetailActivity extends Activity {
         carpoolerType.setText(historyDetail.getPath().carpooler_type);
         destination.setText(historyDetail.getPath().destination);
         origination.setText(historyDetail.getPath().origination);
-        carpoolerName.setText(historyDetail.getCarpooler().user.name);
+        carpoolerName.setText(historyDetail.getCarpooler().userData.name);
         carpoolerDestination.setText(historyDetail.getCarpooler().destination);
         carpoolerOrigination.setText(historyDetail.getCarpooler().origination);
     }
